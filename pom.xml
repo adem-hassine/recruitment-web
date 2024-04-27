@@ -6,8 +6,10 @@
   <version>1.0.0</version>
 
   <properties>
-    <maven.compiler.source>1.8</maven.compiler.source>
-    <maven.compiler.target>1.8</maven.compiler.target>
+    <maven.compiler.source>21</maven.compiler.source>
+    <maven.compiler.target>21</maven.compiler.target>
+    <spring-boot.version>3.2.5</spring-boot.version>
+    <junit-jupiter.version>5.10.2</junit-jupiter.version>
   </properties>
 
   <build>
@@ -21,7 +23,7 @@
               <goal>run</goal>
             </goals>
             <configuration>
-              <tasks>
+              <target>
                 <echo>================================================================================================</echo>
                 <echo>================================================================================================</echo>
                 <echo>==  _____                 _    _   _            _____                 _                       ==</echo>
@@ -32,7 +34,7 @@
                 <echo>==  |_|  \_\___|\__,_|\__,_|   \__|_| |_|\___|  |_|  \_\___|\__,_|\__,_|_| |_| |_|\___|       ==</echo>
                 <echo>================================================================================================</echo>
                 <echo>================================================================================================</echo>
-              </tasks>
+              </target>
             </configuration>
           </execution>
         </executions>
@@ -52,18 +54,37 @@
       </plugins>
     </pluginManagement>
   </build>
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-dependencies</artifactId>
+        <version>${spring-boot.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
 
   <dependencies>
+
     <dependency>
-      <groupId>org.junit.jupiter</groupId>
-      <artifactId>junit-jupiter-api</artifactId>
-      <version>5.5.0</version>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-configuration-processor</artifactId>
+      <optional>true</optional>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-test</artifactId>
       <scope>test</scope>
     </dependency>
     <dependency>
-      <groupId>org.junit.jupiter</groupId>
-      <artifactId>junit-jupiter-engine</artifactId>
-      <version>5.5.0</version>
+      <groupId>org.junit.platform</groupId>
+      <artifactId>junit-platform-suite</artifactId>
       <scope>test</scope>
     </dependency>
     <dependency>
